@@ -61,3 +61,12 @@ class Lexer:
             raise Exception(f"Unknown char: {ch}")
 
         return ('EOF', None)
+
+    def tokenize(self):
+        tokens = []
+        while True:
+            tok = self.get_next_token()
+            tokens.append(tok)
+            if tok[0] == 'EOF':
+                break
+        return tokens
