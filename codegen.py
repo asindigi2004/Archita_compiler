@@ -32,6 +32,22 @@ class CodeGen:
                 self.emit(("ADD",))
             elif node.op == "MINUS":
                 self.emit(("SUB",))
+            elif node.op == "MUL":
+                self.emit(("MUL",))
+            elif node.op == "DIV":
+                self.emit(("DIV",))
+            elif node.op == "EQ":
+                self.emit(("EQ",))
+            elif node.op == "NEQ":
+                self.emit(("NEQ",))
+            elif node.op == "LT":
+                self.emit(("LT",))
+            elif node.op == "GT":
+                self.emit(("GT",))
+            elif node.op == "LE":
+                self.emit(("LE",))
+            elif node.op == "GE":
+                self.emit(("GE",))
             else:
                 raise Exception(f"Unknown operator {node.op}")
 
@@ -47,13 +63,13 @@ class CodeGen:
             start_lbl = self.new_label()
             end_lbl = self.new_label()
 
-            self.emit((f"LABEL", start_lbl))
+            self.emit(("LABEL", start_lbl))
             self.generate(node.cond)
             self.emit(("JUMP_IF_FALSE", end_lbl))
             for stmt in node.body:
                 self.generate(stmt)
             self.emit(("JUMP", start_lbl))
-            self.emit((f"LABEL", end_lbl))
+            self.emit(("LABEL", end_lbl))
 
         else:
             raise Exception(f"Unknown AST node: {node}")
