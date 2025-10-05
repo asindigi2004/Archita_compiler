@@ -11,7 +11,6 @@ Features
 - **Code generation** to low-level bytecode
 - **Virtual Machine** execution with a stack-based model
 - **While loops**, **assignments**, **arithmetic operations**, and **print statements**
-- Unit testing with `unittest`
 - Optional CLI for quick expression evaluation (`3 + 5` → `8`)
 
 ---
